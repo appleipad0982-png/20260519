@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 手勢辨識猜拳遊戲</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Microsoft JhengHei", sans-serif;
+            color: #fff;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 16px;
+            text-shadow: 0 2px 12px rgba(78, 205, 196, 0.5);
+            letter-spacing: 2px;
+        }
+
+        .game-wrapper {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.6),
+                        0 0 0 1px rgba(255, 255, 255, 0.1);
+        }
+
+        #vid {
+            display: none;
+        }
+
+        #c {
+            display: block;
+            background: #0d1117;
+            width: 640px;
+            height: 480px;
+        }
+
+        .footer {
+            margin-top: 16px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            text-align: center;
+        }
+
+        .footer kbd {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            padding: 2px 6px;
+            font-family: inherit;
+            margin: 0 2px;
+        }
+    </style>
+</head>
+<body>
+    <h1>✊ 🖐 ✌️ AI 手勢辨識猜拳</h1>
+
+    <div class="game-wrapper">
+        <video id="vid" autoplay playsinline muted></video>
+        <canvas id="c" width="640" height="480"></canvas>
+    </div>
+
+    <div class="footer">
+        猜拳:<kbd>✊ 石頭</kbd> <kbd>🖐 布</kbd> <kbd>✌️ 剪刀</kbd>　|　
+        選單:<kbd>✋ 張開手掌 → 繼續</kbd> <kbd>✊ 握拳 → 結束</kbd>
+    </div>
+
+    <!-- MediaPipe CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+
+    <!-- 遊戲主程式 -->
+    <script src="game.js"></script>
+</body>
+</html>
